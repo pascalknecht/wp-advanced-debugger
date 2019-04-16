@@ -25,7 +25,7 @@ final class Plugin
         $hooks = isset($wp_filter[$hook_name]) ? $wp_filter[$hook_name] : [];
 
         ob_start();
-        var_export($hooks);
+        print_r($hooks);
         $dump = ob_get_clean();
 
         $log  = "IP: ".$_SERVER['REMOTE_ADDR'].' - '. date("F j, Y, g:i a") . PHP_EOL.
@@ -33,7 +33,7 @@ final class Plugin
             "Hooked Functions: " . $dump . PHP_EOL.
             "-------------------------".PHP_EOL;
 
-        $logfile = WP_DEBUGGER_DIR . './logs/log_'.date("j.n.Y").'.log';
+        $logfile = WP_DEBUGGER_DIR . '/logs/log_'.date("j.n.Y").'.log';
 
         file_put_contents($logfile, $log, FILE_APPEND);
     }
